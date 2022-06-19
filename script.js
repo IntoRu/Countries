@@ -37,10 +37,15 @@ countriesApi
             el.addEventListener('click', () => {
                 // console.log(el.value) // значение каждого выпадающего списка
                 const getCountry = arr.filter(coun => {
-                    return coun.name == el.value
+                    if (el.value == 'Выберите страну') {
+                        img.src = ''
+                    }
+                    else {
+                        return coun.name == el.value
+                    }
                 })
                 getCountry.forEach(el => {
-                    console.log(el.flag)
+                    // console.log(el.flag)
                     img.src = el.flag
                 })
             })
