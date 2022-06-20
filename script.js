@@ -38,19 +38,11 @@ countriesApi
         optionTouch.forEach(el => {
             el.addEventListener('click', () => {
                 // console.log(el.value) // значение каждого выпадающего списка
-                const getCountry = arr.filter(coun => {
-                    if (el.value == 'Выберите страну') {
-                        imgName.src = ''
-                        imgLocation.src = ''
+                arr.forEach(elArr => {
+                    if (elArr.name == el.value) {
+                        imgName.src = elArr.flag
+                        imgLocation.src = elArr.location
                     }
-                    else {
-                        return coun.name == el.value
-                    }
-                })
-                getCountry.forEach(el => {
-                    // console.log(el.flag)
-                    imgName.src = el.flag
-                    imgLocation.src = el.location
                 })
             })
         })
