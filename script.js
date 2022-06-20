@@ -3,7 +3,8 @@ const countriesApi = fetch('api.json') // api
 let arr = []// обьект с названиями стран и ссылкой на флаги
 let options = '' // сюда будем записовать html выпадающий список
 
-let img = document.querySelector('img')
+let imgName = document.querySelector('.nameImg')
+let imgLocation = document.querySelector('.locationImg')
 
 const select = document.querySelector('select')
 
@@ -16,6 +17,7 @@ countriesApi
             let mass = {
                 name: el.name,
                 flag: el.media.flag,
+                location: el.media.orthographic,
                 id: el.id
             }
             arr.push(mass)
@@ -38,7 +40,8 @@ countriesApi
                 // console.log(el.value) // значение каждого выпадающего списка
                 const getCountry = arr.filter(coun => {
                     if (el.value == 'Выберите страну') {
-                        img.src = ''
+                        imgName.src = ''
+                        imgLocation.src = ''
                     }
                     else {
                         return coun.name == el.value
@@ -46,7 +49,8 @@ countriesApi
                 })
                 getCountry.forEach(el => {
                     // console.log(el.flag)
-                    img.src = el.flag
+                    imgName.src = el.flag
+                    imgLocation.src = el.location
                 })
             })
         })
@@ -59,11 +63,13 @@ countriesApi
         btn.addEventListener('click', function () {
             arr.forEach(el => {
                 if (el.name.toUpperCase() === input.value.toUpperCase()) { // без учёта регистра
-                    img.src = el.flag
+                    imgName.src = el.flag
+                    imgLocation.src = el.location
                 }
             })
             input.value = ''
         })
+
     })
 
 
