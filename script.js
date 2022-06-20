@@ -50,7 +50,23 @@ countriesApi
                 })
             })
         })
+
+        // живой поиск
+
+        let input = document.querySelector('input')
+        let btn = document.querySelector('button')
+
+        btn.addEventListener('click', function () {
+            arr.forEach(el => {
+                if (el.name.toUpperCase() === input.value.toUpperCase()) { // без учёта регистра
+                    img.src = el.flag
+                }
+            })
+            input.value = ''
+        })
     })
+
+
 
 
 

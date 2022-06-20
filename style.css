@@ -15,3 +15,8 @@ img {
     object-fit: contain;
 
 }
+
+select,
+input {
+    text-align: center;
+}
